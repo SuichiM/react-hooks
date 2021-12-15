@@ -1,4 +1,5 @@
 import React, {useState, useEffect, useReducer, useMemo} from "react";
+import Search from "./Search";
 
 const initialState = {
   favorites: [],
@@ -89,9 +90,7 @@ const Characters = () => {
         ))}
       </div>
 
-      <div className="search">
-        <input type="text" value={search} onChange={handleSearch} />
-      </div>
+      <Search search={search} handleSearch={handleSearch} />
       <h2>Characters</h2>
       <div style={{display: "flex", flexWrap: "wrap"}}>
         {filteredUsers.map((character) => (
