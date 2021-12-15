@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useReducer} from "react";
+import React, {useState, useEffect, useReducer, useMemo} from "react";
 
 const initialState = {
   favorites: [],
@@ -46,8 +46,20 @@ const Characters = () => {
 
   const handleSearch = (e) => setSearch(e.target.value);
 
-  const filteredUsers = characters.filter(({name}) =>
-    name.toLowerCase().includes(search.toLowerCase())
+  const filteredUsers = useMemo(
+    () =>
+      characters.filter(({name}) =>
+        name.toLowerCase().includes(search.toLowerCase())
+      ),
+    [characters, search]
+  );
+
+  useMemo(
+    () =>
+      characters.filter((user) => {
+        return user.name.toLowerCase().includes(search.toLocaleLowerCase());
+      }),
+    [characters, search]
   );
 
   return (
