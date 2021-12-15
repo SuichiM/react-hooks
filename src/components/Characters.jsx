@@ -47,37 +47,55 @@ const Characters = () => {
   return (
     <div className="Characters">
       <h2> Favorites</h2>
-
-      {favorites.favorites.map((favorite) => (
-        <li key={favorite.id}>
-          <img
-            className="rounded-circle favoriteCircle"
-            width={64}
-            src={favorite.image}
-            alt={favorite.name}
-          />
-          <button type="button" onClick={() => removeFav(favorite)}>
-            Eliminar
-          </button>
-        </li>
-      ))}
+      <div style={{display: "flex", flexWrap: "wrap"}}>
+        {favorites.favorites.map((favorite) => (
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              marginInline: ".5rem",
+            }}
+            key={favorite.id}
+          >
+            <img
+              className="rounded-circle favoriteCircle"
+              width={64}
+              src={favorite.image}
+              alt={favorite.name}
+            />
+            <button type="button" onClick={() => removeFav(favorite)}>
+              Eliminar
+            </button>
+          </div>
+        ))}
+      </div>
 
       <h2>Characters</h2>
-      <div style={{display: "flex"}}></div>
-      {characters.map((character) => (
-        <div key={character.id}>
-          <h2>{character.name}</h2>
-          <img
-            className="rounded-circle favoriteCircle"
-            width={64}
-            src={character.image}
-            alt={character.name}
-          />
-          <button type="button" onClick={() => handleClick(character)}>
-            Agregar a Favoritos
-          </button>
-        </div>
-      ))}
+      <div style={{display: "flex", flexWrap: "wrap"}}>
+        {characters.map((character) => (
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              marginInline: ".5rem",
+            }}
+            key={character.id}
+          >
+            <h2>{character.name}</h2>
+            <img
+              className="rounded-circle favoriteCircle"
+              width={64}
+              src={character.image}
+              alt={character.name}
+            />
+            <button type="button" onClick={() => handleClick(character)}>
+              Agregar a Favoritos
+            </button>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
