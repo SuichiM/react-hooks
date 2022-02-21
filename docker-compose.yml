@@ -6,7 +6,6 @@ services:
     container_name: react_hooks
     volumes:
       - .:/home/app
-      - /home/app/node_modules
     ports: 
       - 8080:8080
       - 8001:3000
