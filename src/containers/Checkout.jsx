@@ -20,7 +20,7 @@ const Checkout = () => {
           <div className="Checkout-item">
             <div className="Checkout-element">
               <h4>{item.title}</h4>
-              <span> ${item.price}</span>
+              <span>$ {item.price}</span>
             </div>
             <button type="button" onClick={() => handleRemove(item)}>
               <i className="fas fa-trash-alt" />
