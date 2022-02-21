@@ -1,20 +1,18 @@
-import React, { useState, useContext } from 'react';
-import ThemeContext from '../context/ThemeContext';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import '../styles/components/Header.css'
 
 const Header = () => {
-  const [darkMode, setDarkMode] = useState(false);
-  const color = useContext(ThemeContext);
-
-  const handleClick = () => {
-    setDarkMode(!darkMode);
-  }
-
   return (
     <div className="Header">
-      <h1 style={{ color }}>ReactHooks</h1>
-      <button type="button" onClick={handleClick}>{darkMode ? 'Dark Mode' : 'Light Mode'}</button>
-      <button type="button" onClick={() => setDarkMode
-        (!darkMode)}>{darkMode ? 'Dark Mode 2' : 'Light Mode 2'}</button>
+      <h1 className="Header-title">
+        <Link to="/">PlatziConf Merch</Link>
+      </h1>
+      <div className="Header-checkout">
+        <Link to="/checkout">
+          <i className="fas fa-shopping-basket" />
+        </Link>
+      </div>
     </div>
   );
 }
