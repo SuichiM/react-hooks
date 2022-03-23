@@ -1,4 +1,5 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
+import { FormLabel, FormControl, Switch } from '@chakra-ui/react';
 import '../styles/components/Information.css';
 import AppContext from '../context/AppContext';
 import FormWithRef from '../components/FormWithRef';
@@ -7,6 +8,7 @@ import FormWithUseForm from '../components/FormWithUseForm';
 const Information = () => {
   const { state, addToBuyer } = useContext(AppContext);
   const { cart } = state;
+  const [customForm, setCustomForm] = useState(false);
 
   const handleSubmit = (data) => {
     addToBuyer(data);
@@ -14,9 +16,27 @@ const Information = () => {
 
   return (
     <div className="Information">
-      {/* <input type="checkbox" /> */}
-      {/* <FormWithRef onSubmit={handleSubmit} /> */}
-      <FormWithUseForm onSubmit={handleSubmit} />
+      <div>
+        <FormControl display="flex" alignItems="center">
+          <FormLabel htmlFor="email-alerts" mb="0">
+            form with useForm
+          </FormLabel>
+          <Switch
+            id="email-alerts"
+            onChange={() => setCustomForm(!customForm)}
+            value={customForm}
+          />
+          <FormLabel htmlFor="email-alerts" mb="0">
+            custom form
+          </FormLabel>
+        </FormControl>
+        {customForm ? (
+          <FormWithRef onSubmit={handleSubmit} />
+        ) : (
+          <FormWithUseForm onSubmit={handleSubmit} />
+        )}
+      </div>
+
       <div className="Information-sidebar">
         <h3>Pedido:</h3>
         {cart.map(({ title, price }) => (
