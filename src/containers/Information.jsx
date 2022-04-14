@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { FormLabel, FormControl, Switch } from '@chakra-ui/react';
 import '../styles/components/Information.css';
 import AppContext from '../context/AppContext';
