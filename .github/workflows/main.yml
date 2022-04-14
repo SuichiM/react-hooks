@@ -2,7 +2,7 @@ name: Deploy To Production
 on:
   push:
     branches:
-      - main
+      - platzi-confmerch
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
