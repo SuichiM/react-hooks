@@ -26,7 +26,6 @@ const Payment = () => {
   const finalPrice = cart.reduce((price, item) => price + item.price, 0);
 
   const handlePaymentSuccess = (data) => {
-    console.log(data);
     if (data.status === 'COMPLETED') {
       const newOrder = {
         buyer,
