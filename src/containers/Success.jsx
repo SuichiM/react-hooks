@@ -4,20 +4,34 @@ import '../styles/components/Success.css';
 import AppContext from '../context/AppContext';
 import GMap from '../components/GMap';
 import LeafMap from '../components/LeafMap';
+import useLocateAdress from '../hooks/useLocateAdress';
 
 const Success = () => {
   const { state } = useContext(AppContext);
   const [Gmap, setGmap] = useState(true);
 
   const { buyer } = state;
-  const leafPosition = [19.4267261, -99.1718796];
-  const gmapPosition = { lat: 19.4267261, lng: -99.1718796 };
+
+  const {
+    address = '',
+    apto = '',
+    city = '',
+    state: province = '',
+    country = '',
+  } = buyer;
+
+  const { latitude = -27.91421, longitude = -55.75355 } = useLocateAdress(
+    `${address} ${apto} ${city} ${province} ${country}`
+  );
+
+  const leafPosition = [latitude, longitude];
+  const gmapPosition = { lat: latitude, lng: longitude };
 
   return (
     <div className="Success">
       <div className="Success-content">
         <h2>{`${buyer.name}, Gracias por tu compra`}</h2>
-        <span>Tu pedido lelgara en 3 dias a tu direccion:</span>
+        <span>Your purchase will arrive to the address soon:</span>
         <FormControl display="flex" alignItems="center">
           <FormLabel htmlFor="email-alerts" mb="0">
             Gmap

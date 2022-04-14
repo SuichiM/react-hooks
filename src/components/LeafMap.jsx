@@ -6,7 +6,7 @@ function LeafMap({ position }) {
     <MapContainer
       center={position}
       zoom={8}
-      scrollWheelZoom={false}
+      // scrollWheelZoom={false}
       style={{ minHeight: '400px' }}
     >
       <TileLayer
