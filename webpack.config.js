@@ -7,9 +7,9 @@ const Dotenv = require('dotenv-webpack');
 module.exports = {
   entry: './src/index.js',
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
-    publicPath: '/',
+    path: path.join(__dirname, '/build'),
+    filename: 'js/[name].js',
+    chunkFilename: 'js/[id].[chunkhash].js',
   },
   resolve: {
     extensions: ['.js', '.jsx'],
@@ -53,7 +53,6 @@ module.exports = {
     new Dotenv(),
   ],
   devServer: {
-    contentBase: path.join(__dirname, 'dist'),
     compress: true,
     historyApiFallback: true,
     host: '0.0.0.0',
