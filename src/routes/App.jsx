@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import AppContext from '../context/AppContext';
 import useInitialState from '../hooks/useInitialState';
+import env from '../env';
 
 import Home from '../containers/Home';
 import Checkout from '../containers/Checkout';
@@ -14,9 +15,10 @@ import Layout from '../components/Layout';
 
 const App = () => {
   const initialState = useInitialState();
+  const basePath = env.PUBLIC_URL;
   return (
     <AppContext.Provider value={initialState}>
-      <BrowserRouter>
+      <BrowserRouter basename={basePath}>
         <Layout>
           <Switch>
             <Route exact path="/" component={Home} />
