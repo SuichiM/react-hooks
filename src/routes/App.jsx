@@ -15,7 +15,7 @@ import Layout from '../components/Layout';
 
 const App = () => {
   const initialState = useInitialState();
-  const basePath = env.PUBLIC_URL;
+  const basePath = env.publicUrl;
   return (
     <AppContext.Provider value={initialState}>
       <BrowserRouter basename={basePath}>

@@ -3,7 +3,7 @@ const config = {
   paypalClientId: process.env.REACT_APP_PAYPAL_CLIENT_ID,
   googleApiKey: process.env.REACT_APP_GOOGLE_API_KEY,
   positionStackApiKey: process.env.REACT_APP_POSITION_STACK_API_KEY,
-  PUBLIC_URL: process.env.REACT_APP_PUBLIC_URL,
+  publicUrl: process.env.REACT_APP_PUBLIC_URL,
 };
 
 export default config;
