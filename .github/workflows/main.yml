@@ -4,16 +4,24 @@ on:
     branches:
       - store
 env:
-  REACT_APP_PAYPAL_CLIENT_ID: $REACT_APP_PAYPAL_CLIENT_ID
-  REACT_APP_GOOGLE_API_KEY: $REACT_APP_GOOGLE_API_KEY
-  REACT_APP_POSITION_STACK_API_KEY: $REACT_APP_POSITION_STACK_API_KEY
-  REACT_APP_PUBLIC_URL: $REACT_APP_PUBLIC_URL
+  REACT_APP_PAYPAL_CLIENT_ID: ${{ secrets.REACT_APP_PAYPAL_CLIENT_ID }}
+  REACT_APP_GOOGLE_API_KEY: ${{secrets.REACT_APP_GOOGLE_API_KEY}}
+  REACT_APP_POSITION_STACK_API_KEY: ${{secrets.REACT_APP_POSITION_STACK_API_KEY}}
+  REACT_APP_PUBLIC_URL: ${{secrets.REACT_APP_PUBLIC_URL}}
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v2.3.1
+
+      - name: Create env file
+        run: |
+          touch .env
+          echo REACT_APP_PAYPAL_CLIENT_ID=${{REACT_APP_PAYPAL_CLIENT_ID}} >> .env
+          echo REACT_APP_GOOGLE_API_KEY=${{REACT_APP_GOOGLE_API_KEY}} >> .env
+          echo REACT_APP_POSITION_STACK_API_KEY=${{REACT_APP_POSITION_STACK_API_KEY}} >> .env
+          echo REACT_APP_PUBLIC_URL=${{REACT_APP_PUBLIC_URL}} >> .env
 
       - name: Install 🔧 # This example project is built using npm and outputs the result to the 'build' folder. Replace with the commands required to build your project, or remove this step entirely if your site is pre-built.
         run: npm install
